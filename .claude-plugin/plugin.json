@@ -1,0 +1,13 @@
+{
+  "name": "claude-forgot",
+  "version": "1.0.0",
+  "description": "When Claude forgets the rules you set earlier in a long chat, /claude-forgot redoes its last answer to follow them and pins a short, copyable list of the chat's rules.",
+  "author": {
+    "name": "Shakeel Mohun",
+    "url": "https://github.com/chatquill"
+  },
+  "homepage": "https://github.com/chatquill/claude-forgot",
+  "repository": "https://github.com/chatquill/claude-forgot",
+  "license": "MIT",
+  "keywords": ["instructions", "long-chat", "rules", "context", "skill", "productivity"]
+}

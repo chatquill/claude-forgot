@@ -1,0 +1,19 @@
+{
+  "name": "claude-forgot",
+  "owner": {
+    "name": "Shakeel Mohun",
+    "url": "https://github.com/chatquill"
+  },
+  "metadata": {
+    "description": "The claude-forgot plugin for Claude Code."
+  },
+  "plugins": [
+    {
+      "name": "claude-forgot",
+      "source": "./",
+      "description": "When Claude forgets the rules you set earlier in a long chat, /claude-forgot redoes its last answer to follow them and pins a short, copyable list of the chat's rules.",
+      "version": "1.0.0",
+      "category": "productivity"
+    }
+  ]
+}
