@@ -2,7 +2,7 @@
 
 Last updated: October 7, 2026
 
-claude-forgot is a set of written instructions for Claude. It has no code, no servers, no MCP connectors and no analytics.
+The forgot plugin is a set of written instructions for Claude. It has no code, no servers, no MCP connectors and no analytics.
 
 ## What it handles
 

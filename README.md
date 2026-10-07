@@ -1,10 +1,10 @@
-# Claude Forgot
+# Forgot
 
 A Claude plugin for long chats where Claude stops following the rules you gave it at the start.
 
-You set rules early on: reply in British English, keep it under 100 words, no bullet points, we're using Postgres. Forty messages later Claude has slipped. Type `/claude-forgot`. Claude re-reads the whole chat, redoes its last answer so it follows every rule, and pins a short list of the chat's rules under it. That list puts the rules back near the end of the chat, where Claude pays most attention. You can also copy it into a new chat.
+You set rules early on: reply in British English, keep it under 100 words, no bullet points, we're using Postgres. Forty messages later Claude has slipped. Type `/forgot`. Claude re-reads the whole chat, redoes its last answer so it follows every rule, and pins a short list of the chat's rules under it. That list puts the rules back near the end of the chat, where Claude pays most attention. You can also copy it into a new chat.
 
-**Quick install:** inside Claude Code, run `/plugin marketplace add chatquill/claude-forgot`, then `/plugin install claude-forgot@claude-forgot`. Other ways to install are [below](#install).
+**Quick install:** inside Claude Code, run `/plugin marketplace add chatquill/claude-forgot`, then `/plugin install forgot@forgot`. Other ways to install are [below](#install).
 
 ## What it does
 
@@ -16,7 +16,7 @@ You set rules early on: reply in British English, keep it under 100 words, no bu
 - If the last answer already followed the rules, it says so in one line instead of rewriting it.
 - Below a `---` divider, it shows one block titled **Rules for this chat**. The block has at most 10 short lines, so it's cheap to re-read in a long chat.
 - Leaves out passwords, API keys, card numbers and private details, and tells you in one line when it did.
-- Shows the block only when you run `/claude-forgot`. Later replies follow the rules without repeating the block.
+- Shows the block only when you run `/forgot`. Later replies follow the rules without repeating the block.
 
 ### Example
 
@@ -29,7 +29,7 @@ Explain things for a complete beginner. Keep every answer under 100 words. Use B
 Later you added "skip the bullet points, I prefer short paragraphs". Forty messages on, Claude answers in 250 words of jargon, with bullet points and American spelling. You type:
 
 ```text
-/claude-forgot
+/forgot
 ```
 
 Claude replies with the corrected answer: under 100 words, plain language, British spelling, short paragraphs. Under it:
@@ -51,7 +51,7 @@ Rules for this chat
 You can say which rule was broken. Claude checks that one first, then still goes through the whole chat:
 
 ```text
-/claude-forgot you used feet again
+/forgot you used feet again
 ```
 
 If you name a rule you never actually gave, Claude treats it as a new rule and adds it to the block.
@@ -66,10 +66,10 @@ Run these two commands inside Claude Code:
 
 ```text
 /plugin marketplace add chatquill/claude-forgot
-/plugin install claude-forgot@claude-forgot
+/plugin install forgot@forgot
 ```
 
-Then run `/reload-plugins` or start a new session. The command is `/claude-forgot:claude-forgot`, or type `/claude-forgot` and pick it from the list.
+Then run `/reload-plugins` or start a new session. The command is `/forgot:forgot`, or type `/forgot` and pick it from the list.
 
 ### Option 2: Copy the skill folder into Claude Code
 
@@ -83,43 +83,43 @@ Then run `/reload-plugins` or start a new session. The command is `/claude-forgo
 
    ```bash
    mkdir -p ~/.claude/skills
-   cp -r claude-forgot/skills/claude-forgot ~/.claude/skills/
+   cp -r claude-forgot/skills/forgot ~/.claude/skills/
    ```
 
    On Windows (PowerShell):
 
    ```powershell
    New-Item -ItemType Directory -Force "$HOME\.claude\skills"
-   Copy-Item -Recurse claude-forgot\skills\claude-forgot "$HOME\.claude\skills\"
+   Copy-Item -Recurse claude-forgot\skills\forgot "$HOME\.claude\skills\"
    ```
 
-3. Check that `SKILL.md` is at `~/.claude/skills/claude-forgot/SKILL.md`.
+3. Check that `SKILL.md` is at `~/.claude/skills/forgot/SKILL.md`.
 
-4. Start a new Claude Code session. A session that was already open won't see the new skill. The command is `/claude-forgot`.
+4. Start a new Claude Code session. A session that was already open won't see the new skill. The command is `/forgot`.
 
 ### Option 3: Upload the skill file to Claude.ai
 
-1. Download [`claude-forgot.skill`](https://github.com/chatquill/claude-forgot/releases/latest/download/claude-forgot.skill) from the latest release. It's a zip file that contains the skill folder.
+1. Download [`forgot.skill`](https://github.com/chatquill/claude-forgot/releases/latest/download/forgot.skill) from the latest release. It's a zip file that contains the skill folder.
 2. In Claude, open **Settings** and find the **Skills** section (under **Capabilities** on most accounts).
-3. Choose **Upload skill** and select `claude-forgot.skill`.
+3. Choose **Upload skill** and select `forgot.skill`.
 4. Make sure the skill is switched on.
 
 Skills need code execution to be turned on in your settings. On Team and Enterprise plans, an admin may have to allow skills first.
 
-In Claude chat or Cowork, type `/` in the message box and pick Claude Forgot, or just tell Claude it forgot a rule.
+In Claude chat or Cowork, type `/` in the message box and pick Forgot, or just tell Claude it forgot a rule.
 
 ## Updating
 
-- **GitHub plugin (Option 1):** run `/plugin marketplace update claude-forgot` in Claude Code.
+- **GitHub plugin (Option 1):** run `/plugin marketplace update forgot` in Claude Code.
 - **Copied folder (Option 2):** pull the latest version and copy it again:
 
   ```bash
   cd claude-forgot
   git pull
-  cp -r skills/claude-forgot ~/.claude/skills/
+  cp -r skills/forgot ~/.claude/skills/
   ```
 
-- **Uploaded skill (Option 3):** delete the old skill in Settings and upload `claude-forgot.skill` from the latest release.
+- **Uploaded skill (Option 3):** delete the old skill in Settings and upload `forgot.skill` from the latest release.
 
 ## Limits
 
@@ -133,15 +133,16 @@ In Claude chat or Cowork, type `/` in the message box and pick Claude Forgot, or
 .claude-plugin/
 ├── plugin.json              Plugin manifest
 └── marketplace.json         Lets this repo work as its own marketplace
-skills/claude-forgot/
+skills/forgot/
 └── SKILL.md                 The instructions Claude follows
+tests/                       50 chat scenarios and a runner (not part of the plugin)
 ```
 
 To build the `.skill` file yourself:
 
 ```bash
 cd skills
-zip -r ../claude-forgot.skill claude-forgot
+zip -r ../forgot.skill forgot
 ```
 
 ## Feedback

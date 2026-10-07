@@ -2,7 +2,7 @@ name: Release
 
 # Raise "version" in .claude-plugin/plugin.json and push to master.
 # If there is no GitHub release for that version yet, this builds
-# claude-forgot.skill and publishes release v<version> with it attached.
+# forgot.skill and publishes release v<version> with it attached.
 on:
   push:
     branches:
@@ -34,16 +34,16 @@ jobs:
             echo "exists=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Build claude-forgot.skill
+      - name: Build forgot.skill
         if: steps.check.outputs.exists != 'true'
-        run: cd skills && zip -r ../claude-forgot.skill claude-forgot
+        run: cd skills && zip -r ../forgot.skill forgot
 
       - name: Create the release
         if: steps.check.outputs.exists != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "${{ steps.version.outputs.tag }}" claude-forgot.skill \
+          gh release create "${{ steps.version.outputs.tag }}" forgot.skill \
             --target "$GITHUB_SHA" \
             --title "${{ steps.version.outputs.tag }}" \
-            --notes "Download claude-forgot.skill to upload the skill to Claude.ai. Claude Code users get this version from the Claude directory, or with /plugin marketplace update claude-forgot."
+            --notes "Download forgot.skill to upload the skill to Claude.ai. Claude Code users get this version from the Claude directory, or with /plugin marketplace update forgot."
