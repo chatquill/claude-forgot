@@ -135,8 +135,9 @@ In Claude chat or Cowork, type `/` in the message box and pick Forgot, or just t
 └── marketplace.json         Lets this repo work as its own marketplace
 skills/forgot/
 └── SKILL.md                 The instructions Claude follows
-tests/                       50 chat scenarios and a runner (not part of the plugin)
 ```
+
+The 50 test chats and their runner live on the [`dev` branch](https://github.com/chatquill/claude-forgot/tree/dev/tests).
 
 To build the `.skill` file yourself:
 

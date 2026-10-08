@@ -12,7 +12,7 @@
       "name": "forgot",
       "source": "./",
       "description": "When Claude forgets the rules you set earlier in a long chat, /forgot redoes its last answer to follow them and pins a short, copyable list of the chat's rules.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "productivity"
     }
   ]
